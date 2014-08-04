@@ -1,0 +1,24 @@
+<?php
+/**
+ * @file
+ */
+
+/**
+ * Implementation of hook_feeds_plugins().
+ */
+function ubercart_order_feeds_feeds_plugins() {
+  $path = drupal_get_path('module', 'ubercart_order_feeds');
+  $info = array();
+  $info['FeedsOrderProcessor'] = array(
+    'name' => 'Order processor',
+    'description' => 'Create orders.',
+    'help' => 'Create orders from parsed content.',
+    'handler' => array(
+      'parent' => 'FeedsProcessor',
+      'class' => 'FeedsOrderProcessor',
+      'file' => 'FeedsOrderProcessor.inc',
+      'path' => $path,
+    ),
+  );
+  return $info;
+}
